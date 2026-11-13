@@ -1,0 +1,199 @@
+{
+    "MainStory_Popup_Guide": {
+        "recognition": "OCR",
+        "expected": [
+            "^我知道了$"
+        ],
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "action": "Click",
+        "timeout": 2000,
+        "rate_limit": 200,
+        "focus": {
+            "Node.Recognition.Succeeded": "新手引导：只有整段文字是「我知道了」才点击。没有这四个字就不点。缺引导全屏图，词未对照实机。",
+            "Node.Action.Succeeded": "已点击「我知道了」。"
+        },
+        "next": [
+            "MainStory_Loop_Entry"
+        ],
+        "on_error": [
+            "MainStory_Loop_Entry"
+        ]
+    },
+    "MainStory_Popup_Item": {
+        "recognition": "OCR",
+        "expected": [
+            "恭喜获得",
+            "获得物品",
+            "获得奖励",
+            "点击空白处关闭",
+            "点击任意空白处关闭",
+            "点击下方空白处关闭",
+            "点击任意空白处关闭界面",
+            "点击下方空白处关闭界面"
+        ],
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "action": "DoNothing",
+        "timeout": 8000,
+        "rate_limit": 200,
+        "focus": {
+            "Node.Recognition.Succeeded": "获得物品。不点领取、收下、使用。先 [JumpBack] 复用 my_task.json 的关闭三界热点，否则点「点击空白处关闭」。缺获得物品全屏图，词未对照实机。"
+        },
+        "next": [
+            "[JumpBack]关闭三界热点",
+            "MainStory_Popup_Item_BlankClose",
+            "MainStory_Loop_Entry"
+        ],
+        "on_error": [
+            "MainStory_Loop_Entry"
+        ]
+    },
+    "MainStory_Popup_Item_BlankClose": {
+        "recognition": "OCR",
+        "expected": [
+            "^点击空白处关闭$",
+            "^点击空白处关闭界面$",
+            "^点击任意空白处关闭$",
+            "^点击任意空白处关闭界面$",
+            "^点击下方空白处关闭$",
+            "^点击下方空白处关闭界面$",
+            "^点击下万空白处关闭界面$",
+            "^点击屏幕空白处关闭$"
+        ],
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "order_by": "Expected",
+        "action": "Click",
+        "timeout": 2000,
+        "rate_limit": 200,
+        "focus": {
+            "Node.Recognition.Succeeded": "获得物品：点击空白处关闭。不点领取。",
+            "Node.Action.Succeeded": "已点击空白处关闭。"
+        },
+        "next": [
+            "MainStory_Loop_Entry"
+        ],
+        "on_error": [
+            "MainStory_Loop_Entry"
+        ]
+    },
+    "MainStory_Popup_LevelUp": {
+        "recognition": "OCR",
+        "expected": [
+            "等级提升",
+            "恭喜升级",
+            "升到了"
+        ],
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "rate_limit": 200,
+        "focus": {
+            "Node.Recognition.Succeeded": "等级提升。下一步只点「确定」，不点「轻享计划」。人物属性页上的「轻享计划」不会进入本节点。缺等级提升全屏图，词未对照实机。"
+        },
+        "next": [
+            "MainStory_Popup_LevelUp_Confirm",
+            "MainStory_Loop_Entry"
+        ],
+        "on_error": [
+            "MainStory_Loop_Entry"
+        ]
+    },
+    "MainStory_Popup_LevelUp_Confirm": {
+        "recognition": "OCR",
+        "expected": [
+            "^确定$"
+        ],
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "order_by": "Expected",
+        "action": "Click",
+        "timeout": 2000,
+        "rate_limit": 200,
+        "focus": {
+            "Node.Recognition.Succeeded": "等级提升：点击「确定」。识别词不是「轻享计划」。",
+            "Node.Action.Succeeded": "已点击「确定」。"
+        },
+        "next": [
+            "MainStory_Loop_Entry"
+        ],
+        "on_error": [
+            "MainStory_Loop_Entry"
+        ]
+    },
+    "MainStory_Popup_NewFeature": {
+        "recognition": "OCR",
+        "expected": [
+            "新功能开启",
+            "新功能已开启",
+            "开启了新功能"
+        ],
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "rate_limit": 200,
+        "focus": {
+            "Node.Recognition.Succeeded": "新功能开启。有「我知道了」才点。不点「前往」；没有「我知道了」就停止。缺新功能全屏图，词未对照实机。"
+        },
+        "next": [
+            "MainStory_Popup_NewFeature_Know",
+            "MainStory_Stop_Entry"
+        ],
+        "on_error": [
+            "MainStory_Stop_Entry"
+        ]
+    },
+    "MainStory_Popup_NewFeature_Know": {
+        "recognition": "OCR",
+        "expected": [
+            "^我知道了$"
+        ],
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "order_by": "Expected",
+        "action": "Click",
+        "timeout": 2000,
+        "rate_limit": 200,
+        "focus": {
+            "Node.Recognition.Succeeded": "新功能开启：点击「我知道了」，不点「前往」。",
+            "Node.Action.Succeeded": "已点击「我知道了」。"
+        },
+        "next": [
+            "MainStory_Loop_Entry"
+        ],
+        "on_error": [
+            "MainStory_Loop_Entry"
+        ]
+    }
+}
