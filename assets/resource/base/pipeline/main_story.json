@@ -1,0 +1,318 @@
+{
+    "MainStory_Loop_Entry": {
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 自动主线剧情骨架，四块业务未实现。MainStoryStuckSeconds 默认 180，MainStoryTimeoutSeconds 默认 7200，单位秒，见任务选项。弹窗和停止挂在 next 的 [JumpBack] 上（本仓库没有 interrupt 字段）。"
+        },
+        "next": [
+            "[JumpBack]MainStory_Popup_Guide",
+            "[JumpBack]MainStory_Popup_Item",
+            "[JumpBack]MainStory_Popup_LevelUp",
+            "[JumpBack]MainStory_Popup_NewFeature",
+            "[JumpBack]MainStory_Stop_ManualChoice",
+            "[JumpBack]MainStory_Stop_Paywall",
+            "[JumpBack]MainStory_Stop_ScreenStuck",
+            "[JumpBack]MainStory_Stop_Timeout",
+            "MainStory_Loop_ClickQuest"
+        ]
+    },
+    "MainStory_Loop_ClickQuest": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Loop_ClickQuest"
+        ],
+        "roi": [
+            1035,
+            112,
+            245,
+            294
+        ],
+        "timeout": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 点右侧任务栏「主线」。ROI 沿用 shimen_renwu.json 的 shimen_renwu2_dianji。当前 expected 是占位，不会命中，也不点击。"
+        },
+        "next": [
+            "[JumpBack]MainStory_Popup_Guide",
+            "[JumpBack]MainStory_Popup_Item",
+            "[JumpBack]MainStory_Popup_LevelUp",
+            "[JumpBack]MainStory_Popup_NewFeature",
+            "[JumpBack]MainStory_Stop_ManualChoice",
+            "[JumpBack]MainStory_Stop_Paywall",
+            "[JumpBack]MainStory_Stop_ScreenStuck",
+            "[JumpBack]MainStory_Stop_Timeout",
+            "[JumpBack]展开-首页任务栏",
+            "[JumpBack]任务栏切换为任务",
+            "MainStory_Loop_WaitPath"
+        ]
+    },
+    "MainStory_Loop_WaitPath": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Loop_WaitPath"
+        ],
+        "roi": [
+            0,
+            0,
+            1,
+            1
+        ],
+        "timeout": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 等自动寻路。复用 my_task.json 的 自动寻路中-图片识别，不改该文件。"
+        },
+        "next": [
+            "[JumpBack]MainStory_Popup_Guide",
+            "[JumpBack]MainStory_Popup_Item",
+            "[JumpBack]MainStory_Popup_LevelUp",
+            "[JumpBack]MainStory_Popup_NewFeature",
+            "[JumpBack]MainStory_Stop_ManualChoice",
+            "[JumpBack]MainStory_Stop_Paywall",
+            "[JumpBack]MainStory_Stop_ScreenStuck",
+            "[JumpBack]MainStory_Stop_Timeout",
+            "MainStory_Loop_Dialog",
+            "MainStory_Loop_Skip",
+            "MainStory_Battle_Entry",
+            "MainStory_Loop_Entry"
+        ]
+    },
+    "MainStory_Loop_Dialog": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Loop_Dialog"
+        ],
+        "roi": [
+            0,
+            0,
+            1,
+            1
+        ],
+        "timeout": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 点对话推进。没有对话截图前不点击。命中后去 MainStory_Battle_Entry，或回 MainStory_Loop_Entry。"
+        },
+        "next": [
+            "[JumpBack]MainStory_Popup_Guide",
+            "[JumpBack]MainStory_Popup_Item",
+            "[JumpBack]MainStory_Popup_LevelUp",
+            "[JumpBack]MainStory_Popup_NewFeature",
+            "[JumpBack]MainStory_Stop_ManualChoice",
+            "[JumpBack]MainStory_Stop_Paywall",
+            "[JumpBack]MainStory_Stop_ScreenStuck",
+            "[JumpBack]MainStory_Stop_Timeout",
+            "MainStory_Battle_Entry",
+            "MainStory_Loop_Entry"
+        ]
+    },
+    "MainStory_Loop_Skip": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Loop_Skip"
+        ],
+        "roi": [
+            1029,
+            0,
+            251,
+            160
+        ],
+        "timeout": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: OCR「跳过」再点。可改走 fuben69.json 的 点击副本-跳过剧情动画、跳过剧情动画-快进键，不改该文件。当前 expected 是占位，不点击。"
+        },
+        "next": [
+            "[JumpBack]MainStory_Popup_Guide",
+            "[JumpBack]MainStory_Popup_Item",
+            "[JumpBack]MainStory_Popup_LevelUp",
+            "[JumpBack]MainStory_Popup_NewFeature",
+            "[JumpBack]MainStory_Stop_ManualChoice",
+            "[JumpBack]MainStory_Stop_Paywall",
+            "[JumpBack]MainStory_Stop_ScreenStuck",
+            "[JumpBack]MainStory_Stop_Timeout",
+            "点击副本-跳过剧情动画",
+            "跳过剧情动画-快进键",
+            "MainStory_Battle_Entry",
+            "MainStory_Loop_Entry"
+        ]
+    },
+    "MainStory_Battle_Entry": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Battle_Entry"
+        ],
+        "roi": [
+            0,
+            0,
+            1,
+            1
+        ],
+        "timeout": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 进入战斗。模板 ROI 见 my_task.json 的 战斗中-等待5秒，不复用该节点（它把「自动」和「取消」都当成干等）。"
+        },
+        "next": [
+            "[JumpBack]MainStory_Popup_Guide",
+            "[JumpBack]MainStory_Popup_Item",
+            "[JumpBack]MainStory_Popup_LevelUp",
+            "[JumpBack]MainStory_Popup_NewFeature",
+            "[JumpBack]MainStory_Stop_ManualChoice",
+            "[JumpBack]MainStory_Stop_Paywall",
+            "[JumpBack]MainStory_Stop_ScreenStuck",
+            "[JumpBack]MainStory_Stop_Timeout",
+            "[JumpBack]MainStory_Stop_BattleFail",
+            "MainStory_Battle_EnsureAuto"
+        ]
+    },
+    "MainStory_Battle_EnsureAuto": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Battle_EnsureAuto"
+        ],
+        "roi": [
+            1175,
+            549,
+            103,
+            159
+        ],
+        "timeout": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 右下角只有「自动」才点，「取消」表示已经开着，不点。ROI 同 战斗中-等待5秒。"
+        },
+        "next": [
+            "[JumpBack]MainStory_Popup_Guide",
+            "[JumpBack]MainStory_Popup_Item",
+            "[JumpBack]MainStory_Popup_LevelUp",
+            "[JumpBack]MainStory_Popup_NewFeature",
+            "[JumpBack]MainStory_Stop_ManualChoice",
+            "[JumpBack]MainStory_Stop_Paywall",
+            "[JumpBack]MainStory_Stop_ScreenStuck",
+            "[JumpBack]MainStory_Stop_Timeout",
+            "[JumpBack]MainStory_Stop_BattleFail",
+            "MainStory_Battle_Judge"
+        ]
+    },
+    "MainStory_Battle_Judge": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Battle_Judge"
+        ],
+        "roi": [
+            0,
+            0,
+            1,
+            1
+        ],
+        "timeout": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 判断胜负。赢去 MainStory_Loop_Entry，输去 MainStory_Stop_BattleFail。当前不会命中，避免把空骨架判成赢。"
+        },
+        "next": [
+            "[JumpBack]MainStory_Stop_BattleFail",
+            "MainStory_Loop_Entry",
+            "MainStory_Stop_BattleFail"
+        ]
+    },
+    "MainStory_Stop_Entry": {
+        "focus": {
+            "Node.Recognition.Succeeded": "自动主线剧情停止。TODO: 截图尚未保存，目前只有这条日志。不点击。"
+        }
+    },
+    "MainStory_Stop_ManualChoice": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Stop_ManualChoice"
+        ],
+        "roi": [
+            876,
+            5,
+            311,
+            544
+        ],
+        "timeout": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 需要手动选择（请选择要做的事 / 请选择正确答案）。不点选项。写日志并截图后停止。"
+        },
+        "next": [
+            "MainStory_Stop_Entry"
+        ]
+    },
+    "MainStory_Stop_Paywall": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Stop_Paywall"
+        ],
+        "roi": [
+            200,
+            40,
+            880,
+            640
+        ],
+        "timeout": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 付费界面（充值、仙玉、限时礼包、首充，中央弹窗）。只停止，不点击。写日志并截图。"
+        },
+        "next": [
+            "MainStory_Stop_Entry"
+        ]
+    },
+    "MainStory_Stop_BattleFail": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Stop_BattleFail"
+        ],
+        "roi": [
+            0,
+            0,
+            1,
+            1
+        ],
+        "timeout": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 战斗失败。不点复活或再战。写日志并截图后停止。不走 mijing_renwu.json 的 mijing_shibai。"
+        },
+        "next": [
+            "MainStory_Stop_Entry"
+        ]
+    },
+    "MainStory_Stop_ScreenStuck": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Stop_ScreenStuck"
+        ],
+        "roi": [
+            0,
+            0,
+            1,
+            1
+        ],
+        "timeout": 500,
+        "attach": {
+            "MainStoryStuckSeconds": 180
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 画面不变超过 MainStoryStuckSeconds（默认 180）秒。写日志并截图后停止。计时未实现。"
+        },
+        "next": [
+            "MainStory_Stop_Entry"
+        ]
+    },
+    "MainStory_Stop_Timeout": {
+        "recognition": "OCR",
+        "expected": [
+            "TODO_MainStory_Stop_Timeout"
+        ],
+        "roi": [
+            0,
+            0,
+            1,
+            1
+        ],
+        "timeout": 500,
+        "attach": {
+            "MainStoryTimeoutSeconds": 7200
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "TODO: 整体运行超过 MainStoryTimeoutSeconds（默认 7200）秒。写日志并截图后停止。计时未实现。"
+        },
+        "next": [
+            "MainStory_Stop_Entry"
+        ]
+    }
+}
