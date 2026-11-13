@@ -1,0 +1,46 @@
+{
+    "task": [
+        {
+            "name": "自动主线剧情",
+            "entry": "MainStory_Loop_Entry",
+            "description": "空骨架，业务未实现。MainStoryStuckSeconds 默认 180 秒，MainStoryTimeoutSeconds 默认 7200 秒。",
+            "option": [
+                "主线超时"
+            ]
+        }
+    ],
+    "option": {
+        "主线超时": {
+            "type": "input",
+            "description": "MainStoryStuckSeconds 默认 180，MainStoryTimeoutSeconds 默认 7200，单位秒。TODO: pipeline 只把秒数放在 attach 里，尚未按秒计时。",
+            "inputs": [
+                {
+                    "name": "MainStoryStuckSeconds",
+                    "label": "画面不变秒数",
+                    "default": "180",
+                    "pipeline_type": "int",
+                    "verify": "^[1-9]\\d*$"
+                },
+                {
+                    "name": "MainStoryTimeoutSeconds",
+                    "label": "整体超时秒数",
+                    "default": "7200",
+                    "pipeline_type": "int",
+                    "verify": "^[1-9]\\d*$"
+                }
+            ],
+            "pipeline_override": {
+                "MainStory_Stop_ScreenStuck": {
+                    "attach": {
+                        "MainStoryStuckSeconds": "{MainStoryStuckSeconds}"
+                    }
+                },
+                "MainStory_Stop_Timeout": {
+                    "attach": {
+                        "MainStoryTimeoutSeconds": "{MainStoryTimeoutSeconds}"
+                    }
+                }
+            }
+        }
+    }
+}

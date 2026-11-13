@@ -106,6 +106,7 @@
         "tasks/zhengli_baibao.json",
         "tasks/zhuogui_hundui.json",
         "tasks/zhuoguirenwu.json",
+        "tasks/main_story.json",
         "tasks/preset/all.json",
         "tasks/preset/Captain.json",
         "tasks/preset/other.json",
